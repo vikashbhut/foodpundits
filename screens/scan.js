@@ -210,7 +210,6 @@ const Scan = () => {
                 .map(item => item.toLowerCase())
                 .find(a => a.includes('saturate')),
             );
-            console.log(findItem);
             if (findItem) {
               const gram = Object.values(findItem)
                 .find(a => {
@@ -222,7 +221,6 @@ const Scan = () => {
                 })
                 ?.replace(/g/g, '')
                 ?.trim();
-              console.log(gram);
               if (!isNaN(gram) && Number(gram) <= 5) {
                 setSad(false);
               } else {
@@ -478,7 +476,7 @@ const Scan = () => {
                 style={{fontSize: 20}}
                 x={SIZES.width * 0.5}
                 y={SIZES.width * 0.5}
-                text={'Bad !!'}
+                text={'Unhealthy !!'}
               />
             ) : (
               <VictoryLabel
@@ -486,7 +484,7 @@ const Scan = () => {
                 style={{fontSize: 20}}
                 x={SIZES.width * 0.5}
                 y={SIZES.width * 0.5}
-                text={'Good !!'}
+                text={'Healthy !!'}
               />
             )}
           </Svg>
