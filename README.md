@@ -11,3 +11,7 @@
 - yarn install or npm install
 - npm start
 - npm run android:dev
+
+# lamda Folder
+
+- contains backend code.
