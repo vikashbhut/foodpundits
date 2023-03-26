@@ -132,7 +132,10 @@ const Login = props => {
               userProfileData.name === name &&
               userProfileData.password === password
             ) {
-              props.navigation.replace('Home');
+              props.navigation.reset({
+                index: 0,
+                routes: [{name: 'Home'}],
+              });
             } else {
               alert('Invalid Credentials');
             }

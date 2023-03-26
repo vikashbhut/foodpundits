@@ -16,6 +16,7 @@ import {readData} from '../utils';
 const Profile = props => {
   const [age, setAge] = useState();
   const [weight, setWeight] = useState();
+  const [height, setHeight] = useState();
   const [name, setName] = useState();
   const [diabetesValue, setDiabetesValue] = useState();
   const [bpLowerValue, setBpLowerValue] = useState();
@@ -180,6 +181,7 @@ const Profile = props => {
           setAge(`${userData.age}`);
           setName(userData.name);
           setWeight(`${userData.weight}`);
+          setHeight(`${userData.height}`);
           if (userData.bloodPressure === 'Yes') {
             setShowBpValue(true);
             setBpLowerValue(`${userData.bloodPressureLowerValue}`);
@@ -322,7 +324,26 @@ const Profile = props => {
             editable={false}
             onChangeText={value => setWeight(value)}
             value={weight}
-            placeholder="Enter Weight"
+            placeholder="Enter Weight in kg"
+            placeholderTextColor={COLORS.white}
+            selectionColor={COLORS.white}
+          />
+        </View>
+        <View style={{marginTop: SIZES.padding}}>
+          <Text style={{color: COLORS.lightGreen, ...FONTS.body3}}>Height</Text>
+          <TextInput
+            style={{
+              marginTop: SIZES.base,
+              borderBottomColor: COLORS.white,
+              borderBottomWidth: 1,
+              height: 40,
+              color: COLORS.white,
+              ...FONTS.body3,
+            }}
+            inputMode="numeric"
+            onChangeText={value => setHeight(value)}
+            value={height}
+            placeholder="Enter Height in cm"
             placeholderTextColor={COLORS.white}
             selectionColor={COLORS.white}
           />

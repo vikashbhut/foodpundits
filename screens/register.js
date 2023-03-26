@@ -18,6 +18,7 @@ import {readData, saveData} from '../utils';
 const Register = props => {
   const [age, setAge] = useState();
   const [weight, setWeight] = useState();
+  const [height, setHeight] = useState();
   const [name, setName] = useState();
   const [animating, setAnimating] = useState(false);
   const routesLength = useNavigationState(state => state.routes.length);
@@ -318,7 +319,26 @@ const Register = props => {
             inputMode="numeric"
             onChangeText={value => setWeight(value)}
             value={weight}
-            placeholder="Enter Weight"
+            placeholder="Enter Weight in kg"
+            placeholderTextColor={COLORS.white}
+            selectionColor={COLORS.white}
+          />
+        </View>
+        <View style={{marginTop: SIZES.padding}}>
+          <Text style={{color: COLORS.lightGreen, ...FONTS.body3}}>Height</Text>
+          <TextInput
+            style={{
+              marginTop: SIZES.base,
+              borderBottomColor: COLORS.white,
+              borderBottomWidth: 1,
+              height: 40,
+              color: COLORS.white,
+              ...FONTS.body3,
+            }}
+            inputMode="numeric"
+            onChangeText={value => setHeight(value)}
+            value={height}
+            placeholder="Enter Height in cm"
             placeholderTextColor={COLORS.white}
             selectionColor={COLORS.white}
           />
@@ -485,6 +505,7 @@ const Register = props => {
       !weight ||
       !name ||
       !password ||
+      !height ||
       (showBpValue && !bpLowerValue) ||
       (showBpValue && !bpHigherValue) ||
       (showDiabetesValue && !diabetesValue)
@@ -494,6 +515,8 @@ const Register = props => {
       alert('Please enter valid age');
     } else if (isNaN(weight)) {
       alert('Please enter valid weight');
+    } else if (isNaN(height)) {
+      alert('Please enter valid height');
     } else if (showBpValue && isNaN(bpLowerValue)) {
       alert('Please enter valid average lower blood pressure value');
     } else if (showBpValue && isNaN(bpHigherValue)) {
@@ -511,6 +534,7 @@ const Register = props => {
         diabetes: checkForDBRadio.value,
         thyroid: checkForTHRadio.value,
         physicalActivity: checkForATRadio.value,
+        height: Number(height),
         radioButtonsAT,
         radioButtonsBp,
         radioButtonsDB,
